@@ -1,0 +1,39 @@
+CC     = "C:\Program Files\MATLAB\MATLAB Production Server\R2015a\sys\lcc64\lcc64\bin\lcc64.exe"
+LD     = "C:\Program Files\MATLAB\MATLAB Production Server\R2015a\sys\lcc64\lcc64\bin\lcclnk64.exe"
+LIBCMD = "C:\Program Files\MATLAB\MATLAB Production Server\R2015a\sys\lcc64\lcc64\bin\lcclib64.exe"
+CFLAGS = -dll -noregistrylookup  -c -Zp8 -DLCC_WIN64 -DMATLAB_MEX_FILE -DMX_COMPAT_32 -nodeclspec 
+LDFLAGS = -s -dll -L"C:\Program Files\MATLAB\MATLAB Production Server\R2015a\sys\lcc64\lcc64\lib64" -entry LibMain -map sfun.map 
+LIBFLAGS = 
+
+OBJECTS = \
+	"timeDelayedEKF_OOSM_sfun.obj"\
+	"c3_timeDelayedEKF_OOSM.obj"\
+	"timeDelayedEKF_OOSM_sfun_registry.obj"\
+	"lccstub.obj"\
+	"timeDelayedEKF_OOSM_sfun.def"\
+	"C:\Program Files\MATLAB\MATLAB Production Server\R2015a\extern\lib\win64\microsoft\sf_runtime.lib"\
+	"C:\Program Files\MATLAB\MATLAB Production Server\R2015a\extern\lib\win64\microsoft\libmwblas.lib"\
+	"C:\Program Files\MATLAB\MATLAB Production Server\R2015a\extern\lib\win64\microsoft\libmx.lib"\
+	"C:\Program Files\MATLAB\MATLAB Production Server\R2015a\extern\lib\win64\microsoft\libmex.lib"\
+	"C:\Program Files\MATLAB\MATLAB Production Server\R2015a\extern\lib\win64\microsoft\libmat.lib"\
+	"C:\Program Files\MATLAB\MATLAB Production Server\R2015a\extern\lib\win64\microsoft\libfixedpoint.lib"\
+	"C:\Program Files\MATLAB\MATLAB Production Server\R2015a\extern\lib\win64\microsoft\libut.lib"\
+	"C:\Program Files\MATLAB\MATLAB Production Server\R2015a\extern\lib\win64\microsoft\libmwmathutil.lib"\
+	"C:\Program Files\MATLAB\MATLAB Production Server\R2015a\extern\lib\win64\microsoft\libemlrt.lib"\
+	"C:\Program Files\MATLAB\MATLAB Production Server\R2015a\extern\lib\win64\microsoft\libmwsl_log_load_blocks.lib"\
+	"C:\Program Files\MATLAB\MATLAB Production Server\R2015a\extern\lib\win64\microsoft\libmwsimulink.lib"\
+	"C:\Program Files\MATLAB\MATLAB Production Server\R2015a\lib\win64\libmwipp.lib"\
+
+INCLUDE_PATH= -I"C:\Program Files\MATLAB\MATLAB Production Server\R2015a\sys\lcc64\lcc64\include64"  -I"C:\Program Files\MATLAB\MATLAB Production Server\R2015a\extern\include"  -I"C:\Program Files\MATLAB\MATLAB Production Server\R2015a\simulink\include"  -I"C:\Program Files\MATLAB\MATLAB Production Server\R2015a\stateflow\c\mex\include"  -I"C:\Program Files\MATLAB\MATLAB Production Server\R2015a\rtw\c\src"  -I"C:\Users\Ana\documents\MATLAB\TimeDelayedKF\slprj\_sfprj\timeDelayedEKF_OOSM\_self\sfun\src" 
+ 
+
+timeDelayedEKF_OOSM_sfun.mexw64 : $(MAKEFILE) $(OBJECTS)
+	$(LD) $(LDFLAGS) -o timeDelayedEKF_OOSM_sfun.mexw64 @timeDelayedEKF_OOSM_sfun.lmko
+timeDelayedEKF_OOSM_sfun.obj :	"timeDelayedEKF_OOSM_sfun.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "timeDelayedEKF_OOSM_sfun.c"
+c3_timeDelayedEKF_OOSM.obj :	"c3_timeDelayedEKF_OOSM.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c3_timeDelayedEKF_OOSM.c"
+timeDelayedEKF_OOSM_sfun_registry.obj :	"timeDelayedEKF_OOSM_sfun_registry.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "timeDelayedEKF_OOSM_sfun_registry.c"
+lccstub.obj :	"C:\Program Files\MATLAB\MATLAB Production Server\R2015a\sys\lcc64\lcc64\mex\lccstub.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "C:\Program Files\MATLAB\MATLAB Production Server\R2015a\sys\lcc64\lcc64\mex\lccstub.c"
